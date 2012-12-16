@@ -1,0 +1,57 @@
+<html>
+  <body>
+  {% if currentUser!="DefaultUser" %}
+	<h2>Hello, {{currentUser}}!</h2>
+  <a href="{{ url }}">{{ url_linktext }}</a>  
+	
+  <hr>
+  <div>
+    <h3>Select category to vote:</h3>
+      <form action="/vote_category" method="post">
+      {% for category in allCategory %}       
+        <input type="radio" name="vote" value="{{ category.name|escape }}">{{ category.name|escape }}<br>
+      {% endfor %}
+	  <button name="action" type="submit" value="Select">Select</button>
+      </form> 
+  </div>
+
+  <hr>
+  <div>
+    <h3>Create new category</h3>
+    <br>
+    <form action="/create_category" method="post">
+      Category Name: <input type="text" name="category_name"><br>
+      <input type="submit" value="Create">
+    </form>
+  </div>
+
+  <hr>
+  <div>
+    <h3>Edit current user created category</h3>
+    {% if editableCategory.count != 0 %}
+      <form action="/edit_category" method="post">
+      {% for category in editableCategory %}       
+        <input type="radio" name="edit" value="{{ category.name|escape }}">{{ category.name|escape }}<br>
+      {% endfor %}
+	  <button name="action" type="submit" value="Edit">Edit</button>
+	  <button name="action" type="submit" value="Remove">Remove</button>
+      </form>   
+    {% endif %}
+  </div>
+
+  <hr>
+  <div>
+    <h3>Import category from XML:</h3>
+      <form action="/import_category" ENCTYPE="multipart/form-data" method="post">
+		<input type="file" name="filename"><br>
+		<input type="submit" value="Upload">
+	  </form>
+  </div>
+
+
+  {% else %}
+	<h2>You have not logged in yet, please log in!</h2>
+  <a href="{{ url }}">{{ url_linktext }}</a>
+  {% endif %}
+  </body>
+</html>       

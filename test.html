@@ -1,0 +1,66 @@
+<html>
+
+<h2>test1:
+{{test1}}
+</h2>
+
+<h2>test2:
+{{test2}}
+</h2>
+
+<h2>test3:
+{{test3}}
+</h2>
+
+<h2>test4:
+{{test4}}
+</h2>
+
+<h2>test5:
+{{test5}}
+</h2>
+
+<h2>test6:
+{{test6}}
+</h2>
+
+<h2>test7:
+{{test7}}
+</h2>
+
+<h2>test8:
+{{test8}}
+</h2>
+
+<h2>test9:
+{{test9}}<br><br><br><br><br>
+{{test10}}<br>
+{{test11}}<br>
+{{test12}}<br>
+</h2>
+
+<h2>test10:<br>
+{% for item in xml.getElementsByTagName('NAME') %}
+	{% if item != xml.getElementsByTagName('NAME')[0] %}
+	{{ item.childNodes[0].data }}<br>
+	{% endif %}
+{% endfor%}
+</h2>
+
+
+<h2>test11:<br>
+{% for item in items %}
+
+	{{ item }}<br>
+
+{% endfor%}
+</h2>
+
+
+<h2>test12:<br>
+{% for item in itemQueryResult %}
+	{{item.name}}<br>
+{% endfor %}
+
+</h2>
+</html>

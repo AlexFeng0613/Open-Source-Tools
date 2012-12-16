@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xmp>
+<CATEGORY>
+<NAME>{{ currentCategory }}</NAME>
+{% for item in Items%}
+<ITEM>
+<NAME>{{item.name}}</NAME>
+</ITEM>
+{% endfor %}
+</CATEGORY>
+</xmp>

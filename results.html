@@ -1,0 +1,23 @@
+<html>
+<body>
+<h2>Results of Category {{ category|escape }}</h2>
+<table border="1">
+{% for item in items %}
+<tr> 
+<td> {{ item.name }} </td>
+<td> {{ item.win }}</td>
+<td> {{ item.lose }} </td>
+{%if (item.win+item.lose)== 0%}
+<td> / </td>
+{% else %}
+<td> {{ item.win/(item.win+item.lose)*100 }} %</td>
+{% endif %}
+{% endfor %}
+</tr>
+</table>
+<hr>
+<div>
+  <a href="/">Back to Main Menu</a>
+</div>
+</body>
+</html>
